@@ -46,7 +46,7 @@
                 this.href = dt;
         };
 
-document.getElementById("download").addEventListener('click', download, false);
+        document.getElementById("download").addEventListener('click', download, false);
 
         function redraw() {
 
@@ -54,14 +54,13 @@ document.getElementById("download").addEventListener('click', download, false);
             var rows = Number(document.getElementById("hr").value);
             var cols = Number(document.getElementById("hc").value);
 
-            // .886 is the basic ratio you need
-            var heightNeeded;
             var stupidMath = ((Math.sqrt(Math.pow(width,2) - Math.pow((width/2),2))) * 2)
 
-                heightNeeded = stupidMath * rows + (stupidMath / 2);
+            var    heightNeeded = stupidMath * rows + (stupidMath / 2);
 
 
-            var widthNeeded = (cols * width * 1.7);
+            var widthNeeded = cols * (width * 1.5) + width * .5;
+
             console.log("widthneeded: " + widthNeeded+ ", heightneeded: " + heightNeeded);
 
             document.getElementById("CANVASHOLDER").innerHTML = "<canvas id='HexCanvas' width='"+ widthNeeded +"' height='"+heightNeeded+"'></canvas>";
