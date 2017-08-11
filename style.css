@@ -1,0 +1,12 @@
+.swatch{
+    height:50px; width:50px; background:white; border:1px solid black;
+}
+
+#water{ background: blue;}
+#mountain{background: red;}
+#forest{background: green;}
+#plains{background: yellow;}
+#swamp{background: black;}
+#blank{background: '#eee';}
+
+#newmap{}

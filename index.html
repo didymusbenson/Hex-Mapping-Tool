@@ -2,8 +2,8 @@
 
 <head>
     <title>Hex</title>
-    <script src="hexagon.js"></script>
-
+    <script src="./hexagon.js"></script>
+    <link rel="stylesheet" href="./style.css">
     <style>
         input {
             width: 75px;
@@ -18,26 +18,25 @@
     <div id="CANVASHOLDER">
 
     </div>
-
-
-    <br>
-    <br>
-    <button onclick="setColor('blue')">water</button>
-    <button onclick="setColor('red')">mountain</button>
-    <button onclick="setColor('green')">forest</button>
-    <button onclick="setColor('yellow')">plains</button>
-    <button onclick="setColor('black')">swamp</button>
-    <button onclick="setColor('#eee')">blank</button>
-    <br>
-    <br>
+    <p>
+    <button class="swatch" id="water" onclick="setColor('blue')"></button>
+    <button class="swatch" id="mountain" onclick="setColor('red')"></button>
+    <button class="swatch" id="forest" onclick="setColor('green')"></button>
+    <button class="swatch" id="plains" onclick="setColor('yellow')"></button>
+    <button class="swatch" id="swamp" onclick="setColor('black')"></button>
+    <button class="swatch" id="blank" onclick="setColor('#eee')"></button>
+    </p>
+    <p>
     <input type="text" id="hw" placeholder="Hex Size">
     <input type="text" id="hr" placeholder="# Rows">
     <input type="text" id="hc" placeholder="# Columns">
-    <button onclick="redraw()">NEW MAP</button>
-    <br>
-    <br>
+    <button id="newMap" onclick="redraw()">NEW MAP</button>
+
+    </p>
+    <p>
     <button><a id="download" download="Map.jpg">download as image</a></button>
-    <script>
+    </p>
+        <script>
 
 
         function download() {
