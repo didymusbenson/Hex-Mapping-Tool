@@ -39,7 +39,7 @@
         // HexagonGrid("NAME", HEX WIDTH)
         var hexagonGrid = new HexagonGrid("HexCanvas", 40, 7, 11);
         // drawHexGrid(rows, columns, left, top, DEBUGTEXT)
-        hexagonGrid.drawHexGrid(7, 11, 50, 50, false);
+        hexagonGrid.drawHexGrid(7, 11, 10, 10, false);
 
         function download() {
                 var dt = document.getElementById("HexCanvas").toDataURL('image/jpeg');
@@ -50,18 +50,24 @@ document.getElementById("download").addEventListener('click', download, false);
 
         function redraw() {
 
-            document.getElementById("CANVASHOLDER").innerHTML = "<canvas id='HexCanvas' width='1000' height='700'></canvas>";
+            var width = document.getElementById("hw").value;
+            var rows = document.getElementById("hr").value;
+            var cols = document.getElementById("hc").value;
+
+            // .886 is the basic ratio you need
+            var heightNeeded = (rows * width * 2) + 20;
+            var widthNeeded = (cols * width * 1.7) + 20;
+            console.log("widthneeded: " + widthNeeded+ ", heightneeded: " + heightNeeded);
+
+            document.getElementById("CANVASHOLDER").innerHTML = "<canvas id='HexCanvas' width='"+ widthNeeded +"' height='"+heightNeeded+"'></canvas>";
 
             var canvas = document.getElementById("HexCanvas");
             var context = canvas.getContext("2d");
             context.clearRect(0, 0, canvas.width, canvas.height);
 
-            var width = document.getElementById("hw").value;
-            var rows = document.getElementById("hr").value;
-            var cols = document.getElementById("hc").value;
 
             hexagonGrid = new HexagonGrid("HexCanvas", width, rows, cols);
-            hexagonGrid.drawHexGrid(rows, cols, 50, 50, false)
+            hexagonGrid.drawHexGrid(rows, cols, 10, 10, false)
             console.log("width: " + width + ", rows: " + rows + ", cols: " + cols);
         }
 
