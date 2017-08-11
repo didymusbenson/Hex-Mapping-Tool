@@ -3,7 +3,7 @@
 function HexagonGrid(canvasId, radius, rows, cols) {
     this.rows = rows;
     this.cols = cols;
-    this.fillColor = 'rgba(110,110,70,1)'
+    this.fillColor = 'blue'
     this.radius = radius;
 
     this.height = Math.sqrt(3) * radius;
