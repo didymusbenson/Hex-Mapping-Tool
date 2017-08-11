@@ -29,7 +29,7 @@
     <button onclick="setColor('blue')">water</button>
     <button onclick="setColor('red')">mountain</button>
     <button onclick="setColor('green')">forest</button>
-    <button onclick="setColor('yellow')">field</button>
+    <button onclick="setColor('yellow')">plains</button>
     <button onclick="setColor('black')">swamp</button>
     <br>
     <br>
@@ -50,13 +50,18 @@ document.getElementById("download").addEventListener('click', download, false);
 
         function redraw() {
 
-            var width = document.getElementById("hw").value;
-            var rows = document.getElementById("hr").value;
-            var cols = document.getElementById("hc").value;
+            var width = Number(document.getElementById("hw").value);
+            var rows = Number(document.getElementById("hr").value);
+            var cols = Number(document.getElementById("hc").value);
 
             // .886 is the basic ratio you need
-            var heightNeeded = (rows * width * 2) + 20;
-            var widthNeeded = (cols * width * 1.7) + 20;
+            var heightNeeded;
+            var stupidMath = ((Math.sqrt(Math.pow(width,2) - Math.pow((width/2),2))) * 2)
+
+                heightNeeded = stupidMath * rows + (stupidMath / 2);
+
+
+            var widthNeeded = (cols * width * 1.7);
             console.log("widthneeded: " + widthNeeded+ ", heightneeded: " + heightNeeded);
 
             document.getElementById("CANVASHOLDER").innerHTML = "<canvas id='HexCanvas' width='"+ widthNeeded +"' height='"+heightNeeded+"'></canvas>";
@@ -67,7 +72,7 @@ document.getElementById("download").addEventListener('click', download, false);
 
 
             hexagonGrid = new HexagonGrid("HexCanvas", width, rows, cols);
-            hexagonGrid.drawHexGrid(rows, cols, 10, 10, false)
+            hexagonGrid.drawHexGrid(rows, cols, 0, 0, false)
             console.log("width: " + width + ", rows: " + rows + ", cols: " + cols);
         }
 
