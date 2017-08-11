@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Hex</title>
+    <script src="hexagon.js"></script>
+
+    <style>
+        input {
+            width: 75px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="CANVASHOLDER">
+        <canvas id="HexCanvas" width="1000" height="700"></canvas>
+    </div>
+    <br>
+    <input type="text" id="hw" placeholder="Hex Size">
+    <input type="text" id="hr" placeholder="# Rows">
+    <input type="text" id="hc" placeholder="# Columns">
+    <button onclick="redraw()">DRAW</button>
+
+    <br>
+    <br>
+    <button onclick="setColor('blue')">water</button>
+    <button onclick="setColor('red')">mountain</button>
+    <button onclick="setColor('green')">forest</button>
+    <button onclick="setColor('yellow')">field</button>
+    <button onclick="setColor('black')">swamp</button>
+    <br>
+    <br>
+    <button onclick="download()">DOWNLOAD</button>
+    <script>
+        //INSTANTIATE FIRST HEXAGON GRID
+        // HexagonGrid("NAME", HEX WIDTH)
+        var hexagonGrid = new HexagonGrid("HexCanvas", 40, 7, 11);
+        // drawHexGrid(rows, columns, left, top, DEBUGTEXT)
+        hexagonGrid.drawHexGrid(7, 11, 50, 50, false);
+
+        function download() {
+            window.location = document.getElementById("HexCanvas").toDataURL("image/png");
+        };
+
+
+
+        function redraw() {
+
+            document.getElementById("CANVASHOLDER").innerHTML = "<canvas id='HexCanvas' width='1000' height='700'></canvas>";
+
+            var canvas = document.getElementById("HexCanvas");
+            var context = canvas.getContext("2d");
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            var width = document.getElementById("hw").value;
+            var rows = document.getElementById("hr").value;
+            var cols = document.getElementById("hc").value;
+
+            hexagonGrid = new HexagonGrid("HexCanvas", width, rows, cols);
+            hexagonGrid.drawHexGrid(rows, cols, 50, 50, false)
+            console.log("width: " + width + ", rows: " + rows + ", cols: " + cols);
+        }
+
+        function setColor(color) {
+            hexagonGrid.setDrawColor(color);
+        }
+
+
+
+    </script>
+
+</body>
