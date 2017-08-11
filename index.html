@@ -32,7 +32,7 @@
     <button onclick="setColor('black')">swamp</button>
     <br>
     <br>
-    <button onclick="download()">DOWNLOAD</button>
+    <button><a id="download" download="Map.jpg">download as image</a></button>
     <script>
         //INSTANTIATE FIRST HEXAGON GRID
         // HexagonGrid("NAME", HEX WIDTH)
@@ -41,10 +41,11 @@
         hexagonGrid.drawHexGrid(7, 11, 50, 50, false);
 
         function download() {
-            window.location = document.getElementById("HexCanvas").toDataURL("image/png");
+                var dt = document.getElementById("HexCanvas").toDataURL('image/jpeg');
+                this.href = dt;
         };
 
-
+document.getElementById("download").addEventListener('click', download, false);
 
         function redraw() {
 
